@@ -1,22 +1,27 @@
 import React from 'react';
 import { Sun, Moon } from 'lucide-react';
-import { useTheme } from '../hooks/useTheme';
-import { cn } from '../utils/cn';
 
-export function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme();
+interface ThemeToggleProps {
+  darkMode: boolean;
+  toggleDarkMode: () => void;
+}
 
+const ThemeToggle: React.FC<ThemeToggleProps> = ({ darkMode, toggleDarkMode }) => {
   return (
-    <button
-      onClick={toggleTheme}
-      className={cn(
-        "p-2 rounded-full transition-colors",
-        theme === 'dark' 
-          ? 'bg-gray-800 text-yellow-400 hover:bg-gray-700' 
-          : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-      )}
-    >
-      {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+    <button onClick={toggleDarkMode} className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">
+      {darkMode ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
     </button>
   );
-}
+};
+
+export default ThemeToggle;
+
+
+
+
+
+
+
+
+
+

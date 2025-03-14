@@ -6,6 +6,7 @@ import { AboutPage } from './pages/AboutPage';
 import { ServicesPage } from './pages/ServicesPage';
 import { BookPage } from './pages/BookPage';
 import { ContactPage } from './pages/ContactPage';
+import { FAQPage } from './pages/FAQPage'; // استيراد صفحة الأسئلة الشائعة
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/book" element={<BookPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/faq" element={<FAQPage />} /> {/* مسار الأسئلة الشائعة */}
         </Routes>
       </Layout>
     </Router>

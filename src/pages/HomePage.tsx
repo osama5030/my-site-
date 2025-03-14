@@ -37,8 +37,8 @@ export function HomePage() {
     // Simulate loading
     await new Promise(resolve => setTimeout(resolve, 1000));
     setIsLoading(false);
-    // Navigate to services page
-    window.location.href = '/services';
+    // Navigate to about page
+    window.location.href = '/about';
   };
 
   return (

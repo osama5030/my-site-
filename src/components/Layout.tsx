@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { cn } from '../utils/cn';
+import { cn } from '../utils/cn'; // تأكد من أن هذه الدالة موجودة وتعمل بشكل صحيح
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -12,20 +12,30 @@ interface LayoutProps {
 export function Layout({ children }: LayoutProps) {
   const { t, i18n } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const [darkMode, setDarkMode] = React.useState(false);
+  const [darkMode, setDarkMode] = React.useState<boolean>(false); // استخدم Boolean لتحديد نوع المتغير بشكل دقيق
   const location = useLocation();
+
+  // حفظ واسترجاع الوضع الداكن من localStorage
+  React.useEffect(() => {
+    const storedDarkMode = localStorage.getItem('darkMode') === 'true';
+    setDarkMode(storedDarkMode);
+    document.documentElement.classList.toggle('dark', storedDarkMode);
+  }, []);
 
   const navigation = [
     { name: t('nav.home'), href: '/' },
     { name: t('nav.about'), href: '/about' },
     { name: t('nav.services'), href: '/services' },
     { name: t('nav.book'), href: '/book' },
+    { name: t('nav.faq'), href: '/faq' },
     { name: t('nav.contact'), href: '/contact' },
   ];
 
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    document.documentElement.classList.toggle('dark', !darkMode);
+    const newDarkMode = !darkMode;
+    setDarkMode(newDarkMode);
+    localStorage.setItem('darkMode', newDarkMode.toString()); // حفظ الوضع في localStorage
+    document.documentElement.classList.toggle('dark', newDarkMode); // تغيير الفئة class الخاصة بالعنصر الجذر
   };
 
   const toggleLanguage = () => {
@@ -46,9 +56,9 @@ export function Layout({ children }: LayoutProps) {
           <div className="flex justify-between h-16 items-center">
             <Link to="/" className="flex items-center space-x-2">
               <img
-                src="https://via.placeholder.com/40"
+                src="https://i.postimg.cc/BjMDGbRJ/Screenshot-673-removebg-preview.png"
                 alt="Logo"
-                className="h-8 w-8 rounded-full"
+                className="h-10 w-10 object-contain"
               />
               <span className="text-xl font-bold text-gray-900 dark:text-white">TripTrail</span>
             </Link>
@@ -139,4 +149,12 @@ export function Layout({ children }: LayoutProps) {
     </div>
   );
 }
+
+
+
+
+
+
+
+
 
