@@ -12,7 +12,13 @@
     "isolatedModules": true,
     "moduleDetection": "force",
     "noEmit": true,
+<<<<<<< HEAD
     "jsx": "react-jsx",
+=======
+    "jsx": "react-jsx", // مهم جداً
+    "esModuleInterop": true, // ممكن يساعد في حل مشاكل مؤقتة
+    "allowSyntheticDefaultImports": true, // برضه ممكن يساعد
+>>>>>>> origin/gh-pages
 
     /* Linting */
     "strict": true,
@@ -21,4 +27,8 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src"]
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/gh-pages

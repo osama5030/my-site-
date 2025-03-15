@@ -129,7 +129,11 @@
   "typescript-eslint": "^8.3.0",
   
     
+<<<<<<< HEAD
   "vite": "^5.4.2"
+=======
+  "vite": "^6.2.2"
+>>>>>>> origin/gh-pages
   
   }
 }
